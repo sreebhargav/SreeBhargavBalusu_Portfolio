@@ -7,7 +7,6 @@ const navItems = [
   { name: "System Design", href: "#system-designs" },
   { name: "Contact", href: "#contact" },
 ];
-
 ---
 
 <nav class="navbar">
@@ -21,6 +20,30 @@ const navItems = [
     </ul>
   </div>
 </nav>
+
+<!-- ✅ Run client-side highlight logic -->
+<script client:load>
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-links a");
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.5,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute("id");
+      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+      if (entry.isIntersecting) {
+        navLinks.forEach((a) => a.classList.remove("active"));
+        if (link) link.classList.add("active");
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => observer.observe(section));
+</script>
 
 <style>
 .navbar {
@@ -64,10 +87,17 @@ const navItems = [
   color: #e2e8f0;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.25s ease;
+  transition: color 0.25s ease, border-bottom 0.25s ease;
 }
 
 .nav-links a:hover {
   color: #38bdf8;
+}
+
+/* 🔵 Active highlight */
+.nav-links a.active {
+  color: #38bdf8;
+  border-bottom: 2px solid #38bdf8;
+  padding-bottom: 2px;
 }
 </style>
