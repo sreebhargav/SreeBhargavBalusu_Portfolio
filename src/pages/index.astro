@@ -188,4 +188,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .back-to-top:hover {
     color: #93c5fd;
   }
+  /* 📱 Mobile spacing fix for System Design & Contact sections */
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 100px; /* ensures section titles aren’t hidden under navbar */
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  #system-designs,
+  #contact {
+    margin-top: 2rem;
+    padding-bottom: 5rem; /* adds breathing room at the bottom */
+  }
+}
+
 </style>
