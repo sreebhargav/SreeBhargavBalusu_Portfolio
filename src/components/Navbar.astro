@@ -13,7 +13,11 @@ const navItems = [
   <div class="nav-container">
     <a href="#about" class="logo">Sree&nbsp;Bhargav&nbsp;<span>Balusu</span></a>
 
-    <ul class="nav-links">
+    <!-- Hamburger button -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+
+    <!-- Navigation links -->
+    <ul class="nav-links" id="nav-links">
       {navItems.map((item) => (
         <li><a href={item.href}>{item.name}</a></li>
       ))}
@@ -21,12 +25,15 @@ const navItems = [
   </div>
 </nav>
 
-<!-- ✅ Move script OUTSIDE of <nav> to ensure Astro runs it -->
+<!-- ✅ JS: Scroll highlight + mobile toggle -->
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-links a");
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-links");
 
+    // Scroll highlight
     function activateLink() {
       let current = "";
       sections.forEach((section) => {
@@ -45,6 +52,17 @@ const navItems = [
     }
 
     window.addEventListener("scroll", activateLink);
+
+    // Mobile toggle
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+      menuToggle.textContent = navMenu.classList.contains("show") ? "✖" : "☰";
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => navMenu.classList.remove("show"));
+    });
   });
 </script>
 
@@ -80,6 +98,7 @@ const navItems = [
   color: #0ea5e9;
 }
 
+/* Nav links */
 .nav-links {
   display: flex;
   list-style: none;
@@ -97,10 +116,54 @@ const navItems = [
   color: #38bdf8;
 }
 
-/* 🟦 Active highlight */
+/* Active highlight */
 .nav-links a.active {
   color: #38bdf8;
   border-bottom: 2px solid #38bdf8;
   padding-bottom: 2px;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  color: #38bdf8;
+  cursor: pointer;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    flex-direction: column;
+    background: rgba(2, 6, 23, 0.98);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 8px;
+    padding: 1rem;
+    width: 200px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.25s ease;
+  }
+
+  .nav-links.show {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .nav-links a {
+    padding: 0.6rem 0;
+  }
 }
 </style>
