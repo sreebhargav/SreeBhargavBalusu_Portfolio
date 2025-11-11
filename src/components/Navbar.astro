@@ -53,18 +53,22 @@ const navItems = [
 
     window.addEventListener("scroll", activateLink);
 
-    // Mobile toggle
+    // Mobile toggle open/close
     menuToggle.addEventListener("click", () => {
       navMenu.classList.toggle("show");
       menuToggle.textContent = navMenu.classList.contains("show") ? "✖" : "☰";
     });
 
-    // Close menu when a link is clicked
+    // ✅ Close menu & reset icon when clicking a link
     navLinks.forEach((link) => {
-      link.addEventListener("click", () => navMenu.classList.remove("show"));
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("show");
+        menuToggle.textContent = "☰";
+      });
     });
   });
 </script>
+
 
 <style>
 .navbar {
