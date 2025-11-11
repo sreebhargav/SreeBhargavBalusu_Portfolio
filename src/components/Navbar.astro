@@ -84,6 +84,7 @@ const navItems = [
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1.5rem;
+  position: relative; /* needed for absolute positioning on mobile */
 }
 
 .logo {
@@ -98,7 +99,7 @@ const navItems = [
   color: #0ea5e9;
 }
 
-/* Nav links */
+/* 🔹 Desktop Navigation */
 .nav-links {
   display: flex;
   list-style: none;
@@ -123,8 +124,7 @@ const navItems = [
   padding-bottom: 2px;
 }
 
-/* Mobile Menu */
-/* Mobile Menu */
+/* 🔹 Mobile Toggle (hidden on desktop) */
 .menu-toggle {
   display: none;
   font-size: 1.8rem;
@@ -134,30 +134,17 @@ const navItems = [
   cursor: pointer;
   position: absolute;
   top: 50%;
-  right: 3.5rem;   /* precise distance before moon icon */
+  right: 3.5rem;  /* space before moon icon */
   transform: translateY(-50%);
-  z-index: 60;     /* stays above everything */
+  z-index: 60;
   padding: 0.3rem 0.6rem;
 }
 
-
-
-/* Responsive for mobile */
+/* 🔹 Responsive for mobile */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
   }
-
-  /* Keep moon icon visible but separated */
-  .theme-toggle {
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
-    z-index: 55;
-  }
-}
-
 
   .nav-links {
     display: none;
@@ -184,6 +171,15 @@ const navItems = [
 
   .nav-links a {
     padding: 0.6rem 0;
+  }
+
+  /* ✅ Keep moon icon visible and separated */
+  .theme-toggle {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    z-index: 55;
   }
 }
 </style>
