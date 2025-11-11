@@ -21,28 +21,31 @@ const navItems = [
   </div>
 </nav>
 
-<!-- ✅ Run client-side highlight logic -->
-<script client:load>
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-links a");
+<!-- ✅ Move script OUTSIDE of <nav> to ensure Astro runs it -->
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a");
 
-  const observerOptions = {
-    root: null,
-    threshold: 0.5,
-  };
+    function activateLink() {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const id = entry.target.getAttribute("id");
-      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
-      if (entry.isIntersecting) {
-        navLinks.forEach((a) => a.classList.remove("active"));
-        if (link) link.classList.add("active");
-      }
-    });
-  }, observerOptions);
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    }
 
-  sections.forEach((section) => observer.observe(section));
+    window.addEventListener("scroll", activateLink);
+  });
 </script>
 
 <style>
@@ -53,7 +56,7 @@ const navItems = [
   background: rgba(2, 6, 23, 0.9);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(56, 189, 248, 0.3);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .nav-container {
@@ -87,14 +90,14 @@ const navItems = [
   color: #e2e8f0;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.25s ease, border-bottom 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #38bdf8;
 }
 
-/* 🔵 Active highlight */
+/* 🟦 Active highlight */
 .nav-links a.active {
   color: #38bdf8;
   border-bottom: 2px solid #38bdf8;
