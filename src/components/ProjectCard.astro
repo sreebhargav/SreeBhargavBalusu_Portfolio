@@ -1,0 +1,98 @@
+---
+const { title, description, image, github, design } = Astro.props;
+---
+
+<article class="project-card">
+  {image ? (
+    <img src={image} alt={title} loading="lazy" class="card-img" />
+  ) : (
+    <div class="image-placeholder">🚧 System Design Only</div>
+  )}
+
+  <div class="card-content">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <div class="links">
+      {github && (
+        <a href={github} target="_blank" class="github-link">
+          View on GitHub →
+        </a>
+      )}
+      {design && (
+        <a href={design} target="_blank" class="design-link">
+          View System Design →
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .image-placeholder {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #fbbf24;
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+  }
+
+  .card-content {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .card-content h3 {
+    color: #93c5fd;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-content p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .github-link,
+  .design-link {
+    color: #38bdf8;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .github-link:hover,
+  .design-link:hover {
+    text-decoration: underline;
+  }
+</style>

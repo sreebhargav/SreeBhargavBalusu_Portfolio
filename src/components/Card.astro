@@ -1,39 +1,134 @@
 ---
-//src/components/Card.astro
-const {name, position, aboutMe, linkedin, github, cvLink, profileImage } = Astro.props;
-
-import '../styles/card.css';
+const {
+  name,
+  position,
+  aboutMe,
+  linkedin,
+  github,
+  cvLink,
+  profileImage,
+  contactEmail,
+} = Astro.props;
 ---
 
-<div class="container">
-    <div class="card-container">
-        <div class="descripcion">
-            <h1>{name}</h1>
-            <h2>{position}</h2>
-            <p>{aboutMe}</p>
-            <div class="icons">
-                <a href={linkedin} class="hover-text" target="_blank">
-                    <span class="tooltip-text" id="fade">
-                        LinkedIn
-                    </span>
-                    <i class="bi bi-linkedin"></i>
-                </a>
-                <a href={github} class="hover-text" target="_blank">
-                    <span class="tooltip-text" id="fade">
-                        GitHub
-                    </span>
-                    <i class="bi bi-github"></i>
-                </a>
-                <a href={cvLink} class="hover-text" target="_blank">
-                    <span class="tooltip-text" id="fade">
-                        Resume
-                    </span>
-                    <i class="bi bi-file-earmark-arrow-down"></i>
-                </a>
-            </div>
-        </div>
-        <div class="image">
-            <img src={profileImage} alt="">
-        </div>
+<section class="intro-card">
+  <div class="card-wrapper">
+    <img src={profileImage} alt={name} class="profile" />
+
+    <div class="info">
+      <h1>{name}</h1>
+      <h3>{position}</h3>
+      <p class="tagline">
+        Backend & AI Systems Engineer | Building Scalable Platforms & Multi-Agent DevTools
+      </p>
+      <p>{aboutMe}</p>
+
+      <div class="links">
+        <a href={linkedin} target="_blank">LinkedIn</a>
+        <a href={github} target="_blank">GitHub</a>
+        <a href={`mailto:${contactEmail}`}>Email</a>
+      </div>
+
+      <a href={cvLink} target="_blank" class="resume-button">📄 View Full Resume</a>
     </div>
-</div>
+  </div>
+</section>
+
+<style>
+  .intro-card {
+    background: #020617;
+    color: #e2e8f0;
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1000px;
+    flex-wrap: wrap;
+  }
+
+  .profile {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #38bdf8;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+  }
+
+  .info {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    color: #60a5fa;
+  }
+
+  h3 {
+    color: #93c5fd;
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    color: #94a3b8;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    max-width: 620px;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .links a {
+    background: #38bdf8;
+    color: #020617;
+    padding: 0.55rem 1.2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .links a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(56, 189, 248, 0.4);
+  }
+
+  .resume-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  color: #020617;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
+}
+
+.resume-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.5);
+  background: linear-gradient(90deg, #0ea5e9, #0284c7);
+}
+
+</style>

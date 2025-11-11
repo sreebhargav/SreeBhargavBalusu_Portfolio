@@ -1,0 +1,84 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+const projects = [
+  {
+    title: "AgentPR – AI-Powered GitHub PR Automation Tool",
+    description:
+      "Automated PR triage with GPT-4 multi-agent system using Node.js, LangChain & Docker. Cut manual review time by 80% across 100+ PRs.",
+    image: "/images/agentpr.jpg",
+    github: "https://github.com/AgentPRBySID",
+    design: "https://www.linkedin.com/posts/sreebhargavbalusu_ai-opensource-developertools-activity-7333966925472976897-77sE",
+  },
+  {
+    title: "Patient EMR System",
+    description:
+      "Built fault-tolerant EMR backend with Java, Docker & AWS EC2/RDS. Improved availability by 45% and cut downtime by 50%.",
+    image: "/images/PatientEMR.png",
+    github: "https://github.com/sreebhargav/Simple-Web-App",
+    design: "https://www.linkedin.com/posts/sreebhargavbalusu_systemdesign-aws-docker-activity-7350597366535593984-wV4x",
+  },
+  {
+    title: "Social Media Platform",
+    description:
+      "Spring Boot + JWT authentication with Kafka event-driven architecture. Reduced unauthorized access by 95% and server load by 30%.",
+    image: "/images/SocialMedia.png",
+    github: "https://github.com/sreebhargav/Social-Media-Platform",
+    design: "https://www.linkedin.com/posts/sreebhargavbalusu_workout-memes-devtips-activity-7353182863015432192-i-zz",
+  },
+  {
+    title: "Real Estate Listing Platform",
+    description:
+      "React + Django + AWS app with optimized property search. Boosted user engagement by 50% and cut retrieval time by 40%.",
+    image: "/images/RE.png",
+    github: "https://github.com/sreebhargav/Real_Estate_App",
+    design: "https://www.linkedin.com/posts/sreebhargavbalusu_systemdesign-aws-s3-activity-7355657719288143872-xAnu",
+  },
+  {
+    title: "AI-Powered Drowsiness Detection",
+    description:
+      "Real-time detection using Eye Aspect Ratio (EAR) and dynamic learning — no pre-trained models required.",
+    image: "/images/Driver1.png",
+    github: "https://github.com/sreebhargav/Driver-Safe-Detection-System",
+    design: "https://www.linkedin.com/posts/sreebhargavbalusu_systemdesign-ai-drowsinessdetection-activity-7358618739514171392-7l85",
+  },
+  {
+  title: "AI Safety Middleware – Prompt Firewall (System Design)",
+  description:
+    "Designed a scalable AI safety middleware for prompt validation, rate-limiting, and context sanitization across multi-LLM environments using Redis Streams, gRPC & FastAPI.",
+  image: "/images/AISafety.png", 
+  github: "",            // no implementation yet
+  design: "https://www.linkedin.com/posts/sreebhargavbalusu_systemdesign-aisafety-securityengineering-activity-7382464101492613120-R7Qb",
+  },
+
+];
+---
+
+<section class="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    {projects.map((p) => <ProjectCard {...p} />)}
+  </div>
+</section>
+
+<style>
+  .projects {
+    padding: 4rem 2rem;
+    background: #020617;
+  }
+
+  .projects h2 {
+    color: #60a5fa;
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 4rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+</style>

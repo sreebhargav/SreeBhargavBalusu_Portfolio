@@ -1,30 +1,191 @@
 ---
-// src/pages/index.astro
+import ScrollReveal from "../components/ScrollReveal.jsx";
 
-import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
+import Experience from "../components/Experience.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import SystemDesigns from "../components/SystemDesigns.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!-- profile2.webp you can remove | Photo <a href="https://unsplash.com/es/@charlesdeluvio?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">charlesdeluvio</a> en <a href="https://unsplash.com/es/fotos/hombre-con-gorro-negro-kVg2DQTAK7c?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-   -->
+<BaseLayout 
+  title="Sree Bhargav Balusu | Portfolio" 
+  description="Software engineer with 5+ years of experience specializing in AI, distributed systems, and full-stack development. MSCS candidate at the University of Maryland."
+>
 
-<!-- You can replace the card's data with your own here. -->
-<BaseLayout title="Personal Card Portfolio Astro" description="Meta description. Here goes your page description. Provide a clear and concise summary of the content.">
-	<Card
-	  name="John Smith"
-	  position="Web Developer"
-	  aboutMe={`Hi there! I'm John, a seasoned web developer passionate about crafting clean and dynamic websites. With 5 years of experience, I specialize in front-end and back-end development using HTML, CSS, JavaScript, and frameworks like React and Angular.\n\nI thrive on creating user-centric designs and optimizing performance for seamless browsing experiences.\n\nLet's collaborate TOGHETER!`}
-	  linkedin="https://www.linkedin.com/in/#"
-	  github="https://github.com/alcarazbrian"
-	  cvLink="/files/resume-cv.pdf"
-	  profileImage="/images/profile2.webp"
-	/>
+  <!-- 🧑‍💻 ABOUT SECTION -->
+  <section id="about">
+    <ScrollReveal client:load delay={0.1}>
+      <Card
+        name="Sree Bhargav Balusu"
+        position="Software Engineer"
+        aboutMe={`Hey! My name is Sree – I’ve been engineering for a little over half a decade now. I recently worked on modeling and predicting automotive & robotic behavior in unpredictable environments at the research facility at the University of Maryland. I’ll also be achieving my Masters in Computer Science this May.`}
+        linkedin="https://www.linkedin.com/in/sreebhargavbalusu/"
+        github="https://github.com/sreebhargav"
+        cvLink="https://drive.google.com/file/d/1lVHGHA3utXWlgzMAFprUYRRRqDBCaX5e/view?usp=drive_link"
+        profileImage="/images/pic1.jpg"
+        contactEmail="sreebhargavbalusu@gmail.com"
+      />
+    </ScrollReveal>
+  </section>
+
+  <!-- 💼 EXPERIENCE SECTION -->
+  <section id="experience">
+    <ScrollReveal client:load delay={0.4} stagger={0.6}>
+      <Experience />
+    </ScrollReveal>
+  </section>
+
+  <!-- 🧠 SKILLS SECTION -->
+  <section id="skills">
+    <ScrollReveal client:load delay={0.3}>
+      <Skills />
+    </ScrollReveal>
+  </section>
+
+  <!-- 🚀 PROJECTS SECTION -->
+  <section id="projects">
+    <ScrollReveal client:load delay={0.5} stagger={0.7}>
+      <Projects />
+    </ScrollReveal>
+  </section>
+
+  <!-- 🧩 SYSTEM DESIGN HIGHLIGHTS SECTION -->
+  <section id="system-designs">
+    <ScrollReveal client:load delay={0.5} stagger={0.8}>
+      <SystemDesigns />
+    </ScrollReveal>
+  </section>
+
+  <!-- 📫 CONTACT SECTION -->
+  <section id="contact">
+    <ScrollReveal client:load delay={0.3}>
+      <div class="contact-container">
+        <h2>📫 Get in Touch</h2>
+        <p>
+          I’m always open to discussing new roles, collaborations, or ideas in AI systems, backend engineering, and scalable architectures.
+        </p>
+
+        <div class="contact-links">
+          <!-- ✅ Gmail-first email link -->
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=sreebhargavbalusu@gmail.com&su=Let's%20Connect&body=Hi%20Sree,%0A%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out%20about..."
+            target="_blank"
+            class="email-btn"
+          >
+            ✉️ Email Me
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/sreebhargavbalusu/"
+            target="_blank"
+            class="linkedin-btn"
+          >
+            🔗 Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </ScrollReveal>
+  </section>
+
 </BaseLayout>
 
-<!--
-	"Hi there!, I'm Brian. I hope this small template helps you gain visibility while you build great projects. Thank you for using it. I wish you success in everything you set out to do; you will surely achieve great things.
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
 
-	Here is my GitHub {https://github.com/alcarazbrian}. You can help me by following me, giving a Star to the template, and sharing it so others can see and use it.
+  section {
+    scroll-margin-top: 80px; /* Prevents navbar overlap */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 
-	Have a great day!"
- -->
+  section:nth-child(odd) {
+    background: #020617;
+  }
+
+  section:nth-child(even) {
+    background: #0f172a;
+  }
+
+  /* 📫 CONTACT SECTION */
+  #contact {
+    text-align: center;
+    background: linear-gradient(180deg, #020617, #0f172a);
+    padding: 5rem 2rem;
+  }
+
+  .contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  #contact h2 {
+    color: #60a5fa;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  #contact p {
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    margin-bottom: 2.2rem;
+    line-height: 1.6;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .email-btn,
+  .linkedin-btn {
+    background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+    color: #020617;
+    padding: 0.7rem 1.4rem;
+    border-radius: 0.6rem;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+  }
+
+  .email-btn:hover,
+  .linkedin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.5);
+    cursor: pointer;
+  }
+
+  /* ⚙️ FOOTER */
+  .footer {
+    background: #010b19;
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(56, 189, 248, 0.3);
+  }
+
+  .footer span {
+    color: #38bdf8;
+    font-weight: 600;
+  }
+
+  .back-to-top {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: #60a5fa;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .back-to-top:hover {
+    color: #93c5fd;
+  }
+</style>
