@@ -126,18 +126,25 @@ const navItems = [
 /* Mobile Menu */
 .menu-toggle {
   display: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;          /* slightly larger for tap comfort */
   background: none;
   border: none;
   color: #38bdf8;
   cursor: pointer;
+  z-index: 60;               /* keeps it above moon icon */
+  position: relative;
+  margin-right: 2.5rem;      /* pushes away from the moon icon */
+  padding: 0.3rem 0.6rem;    /* improves tap area */
 }
+
 
 /* Responsive for mobile */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
+  /* ensure moon and hamburger don't overlap */
+  .theme-toggle {
+    margin-right: 0.5rem;
   }
+}
 
   .nav-links {
     display: none;
