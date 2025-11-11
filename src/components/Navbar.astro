@@ -124,27 +124,40 @@ const navItems = [
 }
 
 /* Mobile Menu */
+/* Mobile Menu */
 .menu-toggle {
   display: none;
-  font-size: 1.8rem;          /* slightly larger for tap comfort */
+  font-size: 1.8rem;
   background: none;
   border: none;
   color: #38bdf8;
   cursor: pointer;
-  z-index: 60;               /* keeps it above moon icon */
-  position: relative;
-  margin-right: 2.5rem;      /* pushes away from the moon icon */
-  padding: 0.3rem 0.6rem;    /* improves tap area */
+  position: absolute;
+  top: 50%;
+  right: 3.5rem;   /* precise distance before moon icon */
+  transform: translateY(-50%);
+  z-index: 60;     /* stays above everything */
+  padding: 0.3rem 0.6rem;
 }
+
 
 
 /* Responsive for mobile */
 @media (max-width: 768px) {
-  /* ensure moon and hamburger don't overlap */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Keep moon icon visible but separated */
   .theme-toggle {
-    margin-right: 0.5rem;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    z-index: 55;
   }
 }
+
 
   .nav-links {
     display: none;
