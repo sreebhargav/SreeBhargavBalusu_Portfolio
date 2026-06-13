@@ -4,7 +4,7 @@ import ScrollReveal from "./ScrollReveal.jsx";
 const systemDesigns = [
   {
     title: "AgentPR Workflow – AI-Powered PR Automation",
-    image: "/images/AgentPRimage.png",  
+    image: "/images/AgentPRimage.png",
     link: "https://www.linkedin.com/posts/sreebhargavbalusu_ai-opensource-developertools-activity-7333966925472976897-77sE",
   },
   {
@@ -14,7 +14,7 @@ const systemDesigns = [
   },
   {
     title: "Social Media Platform with Real-Time & AWS EKS",
-    image: "/images/SocialMediaImage.png", 
+    image: "/images/SocialMediaImage.png",
     link: "https://www.linkedin.com/posts/sreebhargavbalusu_workout-memes-devtips-activity-7353182863015432192-i-zz",
   },
   {
@@ -37,10 +37,16 @@ const systemDesigns = [
 
 <section class="system-designs">
   <h2>System Design Highlights</h2>
+
   <ScrollReveal client:load delay={0.3}>
     <div class="design-grid">
       {systemDesigns.map((design) => (
-        <a href={design.link} target="_blank" class="design-card">
+        <a
+          href={design.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="design-card"
+        >
           <img src={design.image} alt={design.title} loading="lazy" />
           <div class="overlay">
             <h3>{design.title}</h3>
@@ -54,7 +60,6 @@ const systemDesigns = [
 
 <style>
 .system-designs {
-  background: #020617;
   padding: 4rem 2rem;
 }
 
@@ -77,32 +82,27 @@ const systemDesigns = [
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: block;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: var(--bg2);
 }
 
-.design-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
-}
+/* ❌ NO TRANSFORMS — EVER */
 
 .design-card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  border-radius: 1rem;
+  display: block;
   filter: brightness(0.9);
-  transition: filter 0.3s ease;
-}
-
-.design-card:hover img {
-  filter: brightness(1);
 }
 
 .overlay {
+  pointer-events: none;
   position: absolute;
   inset: 0;
-  background: rgba(2, 6, 23, 0.8);
+  background: rgba(2, 6, 23, 0.75);
   color: #e2e8f0;
   display: flex;
   flex-direction: column;
@@ -110,7 +110,7 @@ const systemDesigns = [
   align-items: center;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 .design-card:hover .overlay {
@@ -125,7 +125,7 @@ const systemDesigns = [
 
 .overlay p {
   color: #38bdf8;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
 }
 </style>

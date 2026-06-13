@@ -14,7 +14,9 @@ const navItems = [
     <a href="#about" class="logo">Sree&nbsp;Bhargav&nbsp;<span>Balusu</span></a>
 
     <!-- Hamburger button -->
-    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle menu">
+      ☰
+    </button>
 
     <!-- Navigation links -->
     <ul class="nav-links" id="nav-links">
@@ -33,7 +35,6 @@ const navItems = [
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-links");
 
-    // Scroll highlight
     function activateLink() {
       let current = "";
       sections.forEach((section) => {
@@ -53,13 +54,11 @@ const navItems = [
 
     window.addEventListener("scroll", activateLink);
 
-    // Mobile toggle open/close
     menuToggle.addEventListener("click", () => {
       navMenu.classList.toggle("show");
       menuToggle.textContent = navMenu.classList.contains("show") ? "✖" : "☰";
     });
 
-    // ✅ Close menu & reset icon when clicking a link
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         navMenu.classList.remove("show");
@@ -68,7 +67,6 @@ const navItems = [
     });
   });
 </script>
-
 
 <style>
 .navbar {
@@ -88,7 +86,7 @@ const navItems = [
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1.5rem;
-  position: relative; /* needed for absolute positioning on mobile */
+  position: relative;
 }
 
 .logo {
@@ -103,7 +101,7 @@ const navItems = [
   color: #0ea5e9;
 }
 
-/* 🔹 Desktop Navigation */
+/* Desktop Navigation */
 .nav-links {
   display: flex;
   list-style: none;
@@ -121,14 +119,13 @@ const navItems = [
   color: #38bdf8;
 }
 
-/* Active highlight */
 .nav-links a.active {
   color: #38bdf8;
   border-bottom: 2px solid #38bdf8;
   padding-bottom: 2px;
 }
 
-/* 🔹 Mobile Toggle (hidden on desktop) */
+/* Mobile Toggle */
 .menu-toggle {
   display: none;
   font-size: 1.8rem;
@@ -138,13 +135,13 @@ const navItems = [
   cursor: pointer;
   position: absolute;
   top: 50%;
-  right: 3.5rem;  /* space before moon icon */
+  right: 3.5rem;
   transform: translateY(-50%);
   z-index: 60;
   padding: 0.3rem 0.6rem;
 }
 
-/* 🔹 Responsive for mobile */
+/* Responsive for mobile */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -177,13 +174,19 @@ const navItems = [
     padding: 0.6rem 0;
   }
 
-  /* ✅ Keep moon icon visible and separated */
   .theme-toggle {
     position: absolute;
     top: 50%;
     right: 1rem;
     transform: translateY(-50%);
     z-index: 55;
+  }
+}
+
+/* ✅ PRINT: hide navbar (prevents PDF rasterizing + keeps links clickable) */
+@media print {
+  .navbar {
+    display: none !important;
   }
 }
 </style>

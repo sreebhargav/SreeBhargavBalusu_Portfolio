@@ -1,0 +1,145 @@
+---
+import Card from "../components/Card.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
+import SystemDesigns from "../components/SystemDesigns.astro";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sree Bhargav Balusu | Portfolio (PDF)</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ✅ FORCE DARK THEME */
+      html,
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Lato", sans-serif;
+      }
+
+      /* ✅ Preserve colors in PDF (enable Background graphics) */
+      @media print {
+        html,
+        body {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+      }
+
+      /* ✅ SAFE PRINT FIX — do NOT nuke transforms globally */
+      @media print {
+        /* Kill only animation layers */
+        .scroll-reveal,
+        .scroll-reveal-item {
+          transform: none !important;
+          filter: none !important;
+          animation: none !important;
+          transition: none !important;
+        }
+
+        /* Overlays can block anchors */
+        .overlay {
+          display: none !important;
+        }
+
+        /* ✅ CRITICAL: ensure anchors remain clickable */
+        a {
+          position: relative !important;
+          z-index: 10 !important;
+          pointer-events: auto !important;
+          text-decoration: none !important;
+        }
+
+        /* Buttons should look like buttons */
+        .links a,
+        .resume-button,
+        .email-btn,
+        .linkedin-btn {
+          display: inline-flex !important;
+          pointer-events: auto !important;
+        }
+      }
+
+      /* Layout spacing */
+      main section {
+        padding: 4rem 2rem;
+      }
+
+      @media print {
+        main section {
+          padding: 2rem 1.5rem !important;
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <!-- ABOUT -->
+      <section id="about">
+        <Card
+          name="Sree Bhargav Balusu"
+          position="Software Engineer"
+          aboutMe={`Hey! I’m Sree — I graduated in May 2025 with a Master’s in Computer Science from UMBC. I worked as a Backend Developer at Vosyn Inc., building AI-driven systems for generative voice technology, and previously modeled autonomous and robotic behavior in dynamic environments. I’m passionate about creating reliable, intelligent backend systems.`}
+          linkedin="https://www.linkedin.com/in/sreebhargavbalusu/"
+          github="https://github.com/sreebhargav"
+          cvLink="https://drive.google.com/file/d/1lVHGHA3utXWlgzMAFprUYRRRqDBCaX5e/view"
+          profileImage="/images/pic1.jpg"
+          contactEmail="sreebhargavbalusu@gmail.com"
+        />
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <Experience />
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <Skills />
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <Projects />
+      </section>
+
+      <!-- SYSTEM DESIGN -->
+      <section id="system-designs">
+        <SystemDesigns />
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2 style="text-align:center; color:#60a5fa;">Contact</h2>
+        <p style="text-align:center;">
+          Email:
+          <a href="mailto:sreebhargavbalusu@gmail.com">
+            sreebhargavbalusu@gmail.com
+          </a>
+          &nbsp;•&nbsp;
+          LinkedIn:
+          <a href="https://www.linkedin.com/in/sreebhargavbalusu/" target="_blank">
+            /in/sreebhargavbalusu
+          </a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

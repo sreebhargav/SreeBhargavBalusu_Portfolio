@@ -3,6 +3,7 @@
 
 <section class="about">
   <h2>About Me</h2>
+
   <p>
     Hi, I'm <strong>Sree Bhargav Balusu</strong> — a backend developer passionate about building reliable,
     scalable, and impactful systems. Currently pursuing my M.S. in Computer Science at
@@ -24,11 +25,10 @@
 
 <style>
   .about {
-    background: #0f172a;
-    color: #e2e8f0;
     padding: 5rem 2rem;
     text-align: center;
     line-height: 1.7;
+    /* ✅ removed hardcoded background/color to follow global theme */
   }
 
   .about h2 {
@@ -41,13 +41,21 @@
     max-width: 800px;
     margin: 0.8rem auto;
     font-size: 1.05rem;
+    color: var(--text);
   }
 
-  strong {
+  .about strong {
     color: #93c5fd;
   }
 
-  em {
+  .about em {
     color: #38bdf8;
+    font-style: italic;
+  }
+
+  @media print {
+    .about {
+      padding: 2rem 1.25rem !important;
+    }
   }
 </style>

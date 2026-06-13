@@ -1,22 +1,38 @@
 /* GLOBAL DARK/LIGHT MODE SUPPORT */
 :root {
-    --bg: #ffffff;
-    --text: #000000;
-    --card-bg: linear-gradient(to right, #024945, #12a89c); /* unified gradient */
+  --bg: #ffffff;
+  --text: #000000;
+}
+
+.dark {
+  --bg: #131516;
+  --text: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+  font-family: "Lato", sans-serif;
+}
+
+/* ✅ Print/PDF safety: prevent transforms/filters from killing clickable links */
+@media print {
+  * {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+    transform: none !important;
   }
-  
-  .dark {
-    --bg: #131516;
-    --text: #ffffff;
-    --card-bg: linear-gradient(to right, #024945, #12a89c);
-  }
-  
-  body {
-    background-color: var(--bg);
-    color: var(--text);
-    transition: background-color 0.3s, color 0.3s;
-    font-family: 'Lato', sans-serif;
-  }
+}
+
   
   /* ENTRANCE ANIMATION */
   @keyframes fadeSlideUp {

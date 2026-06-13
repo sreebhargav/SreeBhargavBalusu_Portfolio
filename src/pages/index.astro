@@ -3,206 +3,88 @@ import ScrollReveal from "../components/ScrollReveal.jsx";
 
 import Card from "../components/Card.astro";
 import Experience from "../components/Experience.astro";
-import Skills from "../components/Skills.astro";
 import Projects from "../components/Projects.astro";
+import Skills from "../components/Skills.astro";
 import SystemDesigns from "../components/SystemDesigns.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout 
-  title="Sree Bhargav Balusu | Portfolio" 
-  description="Software engineer with 5+ years of experience specializing in AI, distributed systems, and full-stack development. MSCS candidate at the University of Maryland."
+<BaseLayout
+  title="Sree Bhargav Balusu | Portfolio"
+  description="Software engineer specializing in AI, distributed systems, and full-stack development."
 >
 
-  <!-- 🧑‍💻 ABOUT SECTION -->
+  <!-- ABOUT (Card is interactive → DO NOT wrap) -->
   <section id="about">
-    <ScrollReveal client:load delay={0.1}>
-      <Card
-        name="Sree Bhargav Balusu"
-        position="Software Engineer"
-       aboutMe={`Hey! I’m Sree — I graduated in May 2025 with a Master’s in Computer Science from UMBC. I worked as a Backend Developer at Vosyn Inc., building AI-driven systems for generative voice technology, and previously modeled autonomous and robotic behavior in dynamic environments. I’m passionate about creating reliable, intelligent backend systems.`}
-
-
-        linkedin="https://www.linkedin.com/in/sreebhargavbalusu/"
-        github="https://github.com/sreebhargav"
-        cvLink="https://drive.google.com/file/d/1lVHGHA3utXWlgzMAFprUYRRRqDBCaX5e/view?usp=drive_link"
-        profileImage="/images/pic1.jpg"
-        contactEmail="sreebhargavbalusu@gmail.com"
-      />
-    </ScrollReveal>
+    <Card
+      name="Sree Bhargav Balusu"
+      position="Software Engineer"
+      aboutMe={`Hey! I’m Sree — I graduated in May 2025 with a Master’s in Computer Science from UMBC. I worked as a Backend Developer at Vosyn Inc., building AI-driven systems for generative voice technology, and previously modeled autonomous and robotic behavior in dynamic environments. I’m passionate about creating reliable, intelligent backend systems.`}
+      linkedin="https://www.linkedin.com/in/sreebhargavbalusu/"
+      github="https://github.com/sreebhargav"
+      cvLink="https://drive.google.com/file/d/1lVHGHA3utXWlgzMAFprUYRRRqDBCaX5e/view"
+      profileImage="/images/pic1.jpg"
+      contactEmail="sreebhargavbalusu@gmail.com"
+    />
   </section>
 
-  <!-- 💼 EXPERIENCE SECTION -->
+  <!-- EXPERIENCE (safe to reveal content only) -->
   <section id="experience">
-    <ScrollReveal client:load delay={0.4} stagger={0.6}>
+    <ScrollReveal client:load delay={0.2}>
       <Experience />
     </ScrollReveal>
   </section>
 
-  <!-- 🧠 SKILLS SECTION -->
+  <!-- SKILLS -->
   <section id="skills">
-    <ScrollReveal client:load delay={0.3}>
+    <ScrollReveal client:load delay={0.2}>
       <Skills />
     </ScrollReveal>
   </section>
 
-  <!-- 🚀 PROJECTS SECTION -->
+  <!-- PROJECTS -->
   <section id="projects">
-    <ScrollReveal client:load delay={0.5} stagger={0.7}>
+    <ScrollReveal client:load delay={0.3}>
       <Projects />
     </ScrollReveal>
   </section>
 
-  <!-- 🧩 SYSTEM DESIGN HIGHLIGHTS SECTION -->
+  <!-- SYSTEM DESIGNS -->
   <section id="system-designs">
-    <ScrollReveal client:load delay={0.5} stagger={0.8}>
+    <ScrollReveal client:load delay={0.3}>
       <SystemDesigns />
     </ScrollReveal>
   </section>
 
-  <!-- 📫 CONTACT SECTION -->
+  <!-- CONTACT (INTERACTIVE → NEVER WRAP) -->
   <section id="contact">
-    <ScrollReveal client:load delay={0.3}>
-      <div class="contact-container">
-        <h2>📫 Get in Touch</h2>
-        <p>
-          I’m always open to discussing new roles, collaborations, or ideas in AI systems, backend engineering, and scalable architectures.
-        </p>
+    <div class="contact-container">
+      <h2>📫 Get in Touch</h2>
+      <p>
+        I’m always open to discussing new roles, collaborations, or ideas in AI systems,
+        backend engineering, and scalable architectures.
+      </p>
 
-        <div class="contact-links">
-          <!-- ✅ Gmail-first email link -->
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=sreebhargavbalusu@gmail.com&su=Let's%20Connect&body=Hi%20Sree,%0A%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20reach%20out%20about..."
-            target="_blank"
-            class="email-btn"
-          >
-            ✉️ Email Me
-          </a>
+      <div class="contact-links">
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=sreebhargavbalusu@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="email-btn"
+        >
+          ✉️ Email Me
+        </a>
 
-          <a
-            href="https://www.linkedin.com/in/sreebhargavbalusu/"
-            target="_blank"
-            class="linkedin-btn"
-          >
-            🔗 Connect on LinkedIn
-          </a>
-        </div>
+        <a
+          href="https://www.linkedin.com/in/sreebhargavbalusu/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="linkedin-btn"
+        >
+          🔗 Connect on LinkedIn
+        </a>
       </div>
-    </ScrollReveal>
+    </div>
   </section>
 
 </BaseLayout>
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  section {
-    scroll-margin-top: 80px; /* Prevents navbar overlap */
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-
-  section:nth-child(odd) {
-    background: #020617;
-  }
-
-  section:nth-child(even) {
-    background: #0f172a;
-  }
-
-  /* 📫 CONTACT SECTION */
-  #contact {
-    text-align: center;
-    background: linear-gradient(180deg, #020617, #0f172a);
-    padding: 5rem 2rem;
-  }
-
-  .contact-container {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  #contact h2 {
-    color: #60a5fa;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  #contact p {
-    color: #e2e8f0;
-    font-size: 1.1rem;
-    margin-bottom: 2.2rem;
-    line-height: 1.6;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .email-btn,
-  .linkedin-btn {
-    background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-    color: #020617;
-    padding: 0.7rem 1.4rem;
-    border-radius: 0.6rem;
-    text-decoration: none;
-    font-weight: 700;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-  }
-
-  .email-btn:hover,
-  .linkedin-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.5);
-    cursor: pointer;
-  }
-
-  /* ⚙️ FOOTER */
-  .footer {
-    background: #010b19;
-    text-align: center;
-    padding: 2rem 1rem;
-    color: #94a3b8;
-    font-size: 0.95rem;
-    border-top: 1px solid rgba(56, 189, 248, 0.3);
-  }
-
-  .footer span {
-    color: #38bdf8;
-    font-weight: 600;
-  }
-
-  .back-to-top {
-    display: inline-block;
-    margin-top: 1rem;
-    text-decoration: none;
-    color: #60a5fa;
-    font-weight: 600;
-    transition: color 0.2s ease;
-  }
-
-  .back-to-top:hover {
-    color: #93c5fd;
-  }
-  /* 📱 Mobile spacing fix for System Design & Contact sections */
-@media (max-width: 768px) {
-  section {
-    scroll-margin-top: 100px; /* ensures section titles aren’t hidden under navbar */
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
-
-  #system-designs,
-  #contact {
-    margin-top: 2rem;
-    padding-bottom: 5rem; /* adds breathing room at the bottom */
-  }
-}
-
-</style>

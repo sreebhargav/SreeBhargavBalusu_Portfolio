@@ -38,6 +38,7 @@ const experiences = [
 
 <section class="experience">
   <h2>Experience</h2>
+
   <div class="exp-grid">
     {experiences.map((exp) => (
       <div class="exp-card">
@@ -49,6 +50,7 @@ const experiences = [
             <p class="period">{exp.period}</p>
           </div>
         </div>
+
         <ul>
           {exp.description.map((item) => (
             <li>{item}</li>
@@ -60,83 +62,76 @@ const experiences = [
 </section>
 
 <style>
-  .experience {
-    background: #020617;
-    padding: 4rem 2rem;
-  }
+.experience {
+  padding: 4rem 2rem;
+}
 
-  .experience h2 {
-    text-align: center;
-    color: #60a5fa;
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-  }
+.experience h2 {
+  text-align: center;
+  color: #60a5fa;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+}
 
-  .exp-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
+.exp-card {
+  background: var(--bg2);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+}
+
+.exp-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.exp-card h3 {
+  color: #93c5fd;
+  margin: 0;
+}
+
+.company {
+  color: #a5b4fc;
+  font-weight: 500;
+}
+
+.period {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
+
+ul {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.6rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ✅ Print-safe */
+@media print {
   .exp-card {
-    background: #0f172a;
-    border-radius: 1rem;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-color: #ccc;
   }
-
-  .exp-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  }
-
-  .exp-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    border-radius: 0.5rem;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-  }
-
-  .logo:hover {
-    filter: grayscale(0%);
-  }
-
-  h3 {
-    color: #93c5fd;
-    margin: 0;
-  }
-
-  .company {
-    color: #a5b4fc;
-    font-weight: 500;
-    margin-top: 0.2rem;
-  }
-
-  .period {
-    color: #cbd5e1;
-    font-size: 0.9rem;
-  }
-
-  ul {
-    margin-top: 0.5rem;
-    padding-left: 1.2rem;
-  }
-
-  li {
-    margin-bottom: 0.6rem;
-    color: #e2e8f0;
-    line-height: 1.6;
-  }
+}
 </style>

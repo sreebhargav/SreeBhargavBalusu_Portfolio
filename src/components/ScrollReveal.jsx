@@ -30,30 +30,35 @@ export default function ScrollReveal({ children, delay = 0.2, stagger = 0.4 }) {
       filter: "blur(0px)",
       transition: {
         duration: 1,
-        ease: [0.16, 1, 0.3, 1], // smooth cubic-bezier easing
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
 
   return (
     <motion.section
+      className="scroll-reveal"
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
       style={{
         width: "100%",
-        perspective: 1000, // subtle 3D depth
+        perspective: 1000,
         transformStyle: "preserve-3d",
       }}
     >
-      {Array.isArray(children)
-        ? children.map((child, i) => (
-            <motion.div key={i} variants={item}>
-              {child}
-            </motion.div>
-          ))
-        : <motion.div variants={item}>{children}</motion.div>}
+      {Array.isArray(children) ? (
+        children.map((child, i) => (
+          <motion.div key={i} variants={item} className="scroll-reveal-item">
+            {child}
+          </motion.div>
+        ))
+      ) : (
+        <motion.div variants={item} className="scroll-reveal-item">
+          {children}
+        </motion.div>
+      )}
     </motion.section>
   );
 }
